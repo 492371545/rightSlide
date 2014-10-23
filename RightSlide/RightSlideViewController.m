@@ -113,8 +113,6 @@
         {
             [RightSlideViewController defaultVC].center = CGPointMake(self.frame.size.width/2, center.y);
             
-            [RightSlideViewController show];
-
         }
        
     }
