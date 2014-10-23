@@ -16,7 +16,7 @@
 @property (strong, nonatomic) UIView *rightView;
 @property (strong, nonatomic) UIButton *pushbtn;
 @property (strong, nonatomic) UIButton *pushbtn2;
-@property (strong, nonatomic) UISwipeGestureRecognizer *swipeGes;
+@property (strong, nonatomic) UIPanGestureRecognizer *swipeGes;
 
 @end
 
@@ -28,9 +28,13 @@
     if (self) {
         
         self.backgroundColor = [UIColor whiteColor];
+
         //设置位置
         CGRect frame = [[UIScreen mainScreen] bounds];
         self.frame = frame;
+        CGPoint cen =self.center;
+
+//        self.center = CGPointMake(0, cen.y);
 
         if(!_rightView)
         {
@@ -61,13 +65,16 @@
             
         }
         self.imageView.backgroundColor = [UIColor orangeColor];
+        
+        NSLog(@"frame %f", self.imageView.frame.origin.x);
+
         [self addSubview:self.imageView];
         
         if(!_swipeGes)
         {
-            _swipeGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(hide)];
-            
-            [self addGestureRecognizer:_swipeGes];
+            _swipeGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+            _swipeGes.maximumNumberOfTouches = 1;
+            [self.imageView addGestureRecognizer:_swipeGes];
         }
         
 
@@ -75,12 +82,45 @@
     return self;
 }
 
-- (void)swipe:(UISwipeGestureRecognizer*)sender
+- (void)swipe:(UIGestureRecognizer*)sender
 {
-    if(sender.direction == UISwipeGestureRecognizerDirectionLeft)
+    CGPoint oldcen = [RightSlideViewController defaultVC].center;
+
+    if([sender isKindOfClass:[UIPanGestureRecognizer class]])
+    {
+        UIPanGestureRecognizer *g = (UIPanGestureRecognizer*)sender;
+        CGPoint point = [g translationInView:self.imageView];
+
+        [RightSlideViewController defaultVC].center = CGPointMake(oldcen.x+point.x*0.05, oldcen.y);
+
+    }
+    else if([sender isKindOfClass:[UITapGestureRecognizer class]])
     {
         [RightSlideViewController hide];
     }
+  
+    UIGestureRecognizer *rec = (UIGestureRecognizer*)sender;
+    //手势结束后修正位置
+    CGPoint center= [RightSlideViewController defaultVC].center;
+
+    if (rec.state == UIGestureRecognizerStateEnded) {
+        if (center.x<RightSlide_Width/2){
+            
+            [RightSlideViewController defaultVC].center = CGPointMake(self.frame.size.width/2, center.y);
+            
+            [RightSlideViewController hide];
+
+        }
+        else
+        {
+            [RightSlideViewController defaultVC].center = CGPointMake(self.frame.size.width/2, center.y);
+            
+            [RightSlideViewController show];
+
+        }
+       
+    }
+
 }
 - (void)push:(UIButton*)btn
 {
@@ -89,6 +129,8 @@
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          
+                        
+
                      } completion:^(BOOL finish){
                          
                          [[RightSlideViewController defaultVC] removeFromSuperview];
@@ -106,17 +148,26 @@
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
         _imageView.userInteractionEnabled = YES;
-        _imageView.frame = self.bounds;
+        
+        CGRect frame = self.bounds;
+        
+//        frame.size.width = self.frame.size.width-RightSlide_Width;
+
+        _imageView.frame = frame;
         _imageView.layer.shadowColor = [UIColor grayColor].CGColor;
         _imageView.layer.shadowOffset = CGSizeMake(2, 0);
         _imageView.layer.shadowOpacity = 1;
         _imageView.layer.shadowRadius = 30;
         
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = _imageView.bounds;
-        button.backgroundColor = [UIColor clearColor];
-        [button addTarget:self action:@selector(hide) forControlEvents:UIControlEventTouchUpInside];
-        [_imageView addSubview:button];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+        
+        [_imageView addGestureRecognizer:tap];
+        
+//        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//        button.frame = _imageView.bounds;
+//        button.backgroundColor = [UIColor clearColor];
+//        [button addTarget:self action:@selector(hide) forControlEvents:UIControlEventTouchUpInside];
+//        [_imageView addSubview:button];
     }
     return _imageView;
 }
@@ -151,6 +202,7 @@
     UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     [RightSlideViewController defaultVC].imageView.image = viewImage;
+    NSLog(@"frame222 %f", [RightSlideViewController defaultVC].imageView.frame.origin.x);
 
     [ownwindow addSubview:[RightSlideViewController defaultVC]];
 
