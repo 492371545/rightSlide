@@ -21,6 +21,11 @@
 		F32A660819F8B0A30072FBBC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F32A65EA19F8B0A30072FBBC /* UIKit.framework */; };
 		F32A661019F8B0A30072FBBC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F32A660E19F8B0A30072FBBC /* InfoPlist.strings */; };
 		F32A661219F8B0A30072FBBC /* RightSlideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F32A661119F8B0A30072FBBC /* RightSlideTests.m */; };
+		F32A661E19F8B0B70072FBBC /* RightSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F32A661C19F8B0B70072FBBC /* RightSlideViewController.m */; };
+		F32A662419F8CBE80072FBBC /* PushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F32A662219F8CBE80072FBBC /* PushViewController.m */; };
+		F32A662519F8CBE80072FBBC /* PushViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F32A662319F8CBE80072FBBC /* PushViewController.xib */; };
+		F32A662919F8D2CF0072FBBC /* Push2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F32A662719F8D2CF0072FBBC /* Push2ViewController.m */; };
+		F32A662A19F8D2CF0072FBBC /* Push2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F32A662819F8D2CF0072FBBC /* Push2ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,14 @@
 		F32A660D19F8B0A30072FBBC /* RightSlideTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RightSlideTests-Info.plist"; sourceTree = "<group>"; };
 		F32A660F19F8B0A30072FBBC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F32A661119F8B0A30072FBBC /* RightSlideTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RightSlideTests.m; sourceTree = "<group>"; };
+		F32A661B19F8B0B70072FBBC /* RightSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightSlideViewController.h; sourceTree = "<group>"; };
+		F32A661C19F8B0B70072FBBC /* RightSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightSlideViewController.m; sourceTree = "<group>"; };
+		F32A662119F8CBE80072FBBC /* PushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushViewController.h; sourceTree = "<group>"; };
+		F32A662219F8CBE80072FBBC /* PushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushViewController.m; sourceTree = "<group>"; };
+		F32A662319F8CBE80072FBBC /* PushViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PushViewController.xib; sourceTree = "<group>"; };
+		F32A662619F8D2CF0072FBBC /* Push2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Push2ViewController.h; sourceTree = "<group>"; };
+		F32A662719F8D2CF0072FBBC /* Push2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Push2ViewController.m; sourceTree = "<group>"; };
+		F32A662819F8D2CF0072FBBC /* Push2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Push2ViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +130,14 @@
 				F32A65F819F8B0A30072FBBC /* Main.storyboard */,
 				F32A65FB19F8B0A30072FBBC /* ViewController.h */,
 				F32A65FC19F8B0A30072FBBC /* ViewController.m */,
+				F32A661B19F8B0B70072FBBC /* RightSlideViewController.h */,
+				F32A661C19F8B0B70072FBBC /* RightSlideViewController.m */,
+				F32A662119F8CBE80072FBBC /* PushViewController.h */,
+				F32A662219F8CBE80072FBBC /* PushViewController.m */,
+				F32A662319F8CBE80072FBBC /* PushViewController.xib */,
+				F32A662619F8D2CF0072FBBC /* Push2ViewController.h */,
+				F32A662719F8D2CF0072FBBC /* Push2ViewController.m */,
+				F32A662819F8D2CF0072FBBC /* Push2ViewController.xib */,
 				F32A65FE19F8B0A30072FBBC /* Images.xcassets */,
 				F32A65ED19F8B0A30072FBBC /* Supporting Files */,
 			);
@@ -228,9 +249,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F32A662519F8CBE80072FBBC /* PushViewController.xib in Resources */,
 				F32A65FF19F8B0A30072FBBC /* Images.xcassets in Resources */,
 				F32A65F119F8B0A30072FBBC /* InfoPlist.strings in Resources */,
 				F32A65FA19F8B0A30072FBBC /* Main.storyboard in Resources */,
+				F32A662A19F8D2CF0072FBBC /* Push2ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,8 +273,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F32A65FD19F8B0A30072FBBC /* ViewController.m in Sources */,
+				F32A662919F8D2CF0072FBBC /* Push2ViewController.m in Sources */,
+				F32A662419F8CBE80072FBBC /* PushViewController.m in Sources */,
 				F32A65F719F8B0A30072FBBC /* AppDelegate.m in Sources */,
 				F32A65F319F8B0A30072FBBC /* main.m in Sources */,
+				F32A661E19F8B0B70072FBBC /* RightSlideViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
