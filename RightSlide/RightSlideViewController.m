@@ -34,8 +34,6 @@
         self.frame = frame;
         CGPoint cen =self.center;
 
-//        self.center = CGPointMake(0, cen.y);
-
         if(!_rightView)
         {
             _rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, RightSlide_Width, self.frame.size.height)];
@@ -151,8 +149,6 @@
         
         CGRect frame = self.bounds;
         
-//        frame.size.width = self.frame.size.width-RightSlide_Width;
-
         _imageView.frame = frame;
         _imageView.layer.shadowColor = [UIColor grayColor].CGColor;
         _imageView.layer.shadowOffset = CGSizeMake(2, 0);
@@ -162,12 +158,7 @@
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
         
         [_imageView addGestureRecognizer:tap];
-        
-//        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//        button.frame = _imageView.bounds;
-//        button.backgroundColor = [UIColor clearColor];
-//        [button addTarget:self action:@selector(hide) forControlEvents:UIControlEventTouchUpInside];
-//        [_imageView addSubview:button];
+   
     }
     return _imageView;
 }
@@ -202,7 +193,6 @@
     UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     [RightSlideViewController defaultVC].imageView.image = viewImage;
-    NSLog(@"frame222 %f", [RightSlideViewController defaultVC].imageView.frame.origin.x);
 
     [ownwindow addSubview:[RightSlideViewController defaultVC]];
 
