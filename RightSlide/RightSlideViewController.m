@@ -12,6 +12,11 @@
 #define RightSlide_Width 200
 
 @interface RightSlideViewController ()
+@property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) UIView *rightView;
+@property (strong, nonatomic) UIButton *pushbtn;
+@property (strong, nonatomic) UIButton *pushbtn2;
+@property (strong, nonatomic) UISwipeGestureRecognizer *swipeGes;
 
 @end
 
@@ -57,9 +62,25 @@
         }
         self.imageView.backgroundColor = [UIColor orangeColor];
         [self addSubview:self.imageView];
+        
+        if(!_swipeGes)
+        {
+            _swipeGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(hide)];
+            
+            [self addGestureRecognizer:_swipeGes];
+        }
+        
 
     }
     return self;
+}
+
+- (void)swipe:(UISwipeGestureRecognizer*)sender
+{
+    if(sender.direction == UISwipeGestureRecognizerDirectionLeft)
+    {
+        [RightSlideViewController hide];
+    }
 }
 - (void)push:(UIButton*)btn
 {

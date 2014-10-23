@@ -15,10 +15,6 @@
 @end
 
 @interface RightSlideViewController : UIView
-@property (strong, nonatomic) UIImageView *imageView;
-@property (strong, nonatomic) UIView *rightView;
-@property (strong, nonatomic) UIButton *pushbtn;
-@property (strong, nonatomic) UIButton *pushbtn2;
 
 @property (assign, nonatomic) id<RightSlideViewControllerDelegate>delegte;
 
